@@ -3,6 +3,7 @@ import numpy as np
 
 def convert_image_to_array(image, d):
     max_x, max_y, _ = image.shape
+    # separate dx, dy in case i want change "scaling" of output image
     dx, dy = d, d
     # empty array of size image_size / delta
     output_img = np.array( [[0]*int(max_x/dx) for _ in range(int(max_y/dy))] )
