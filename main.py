@@ -15,7 +15,8 @@ def convert_image_to_array(image, d):
     # separate dx, dy in case i want change "scaling" of output image
     dx, dy = d, d
     # empty array of size image_size / delta
-    output_img = [['0' for _ in range(int(img_width/dx))]  for _ in range(int(img_height/dy))]
+    output_img = [['0'  for _ in range(img_width//dx)] \
+                        for _ in range(img_height//dy)]
     for y in range(len(output_img)):
         for x in range(len(output_img[y])):
             avg = rgb_to_gray(*image[x*dx, y*dx])
