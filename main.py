@@ -11,14 +11,11 @@ def convert_image_to_array(image, d):
     dx, dy = d, d
     # empty array of size image_size / delta
     output_img = [[0] * math.ceil(img_width/dx) ] * math.ceil(img_height/dy)
-    s = set()
     for y, row in enumerate(output_img):
         for x in range(len(row)):
             avg = rgb_to_gray(*image[x*dx, y*dy])
             output_img[y][x]=math.floor(avg)
-            s.add(output_img[y][x])
 
-    print(s)
     return output_img
 
 def main():
