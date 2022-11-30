@@ -10,7 +10,7 @@ def convert_image_to_array(image, d):
     # separate dx, dy in case i want change "scaling" of output image
     dx, dy = d, d
     # empty array of size image_size / delta
-    output_img = [[0] * math.ceil(img_width/dx) ] * math.ceil(img_height/dy)
+    output_img = [[0] * math.ceil(img_width/dx)  for _ in range(math.ceil(img_height/dy))]
     for y, row in enumerate(output_img):
         for x in range(len(row)):
             avg = rgb_to_gray(*image[x*dx, y*dy])
@@ -19,8 +19,8 @@ def convert_image_to_array(image, d):
     return output_img
 
 def main():
-    input_img = cv2.imread('pokeball.png')
-    # input_img = cv2.imread('fox.jpg')
+    # input_img = cv2.imread('pokeball.png')
+    input_img = cv2.imread('fox.jpg')
     output_img = convert_image_to_array(input_img, 22)
     for row in output_img:
         print(row)
